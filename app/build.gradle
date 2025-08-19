@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'  // 用于Room数据库注解处理
+}
+
+// 确保使用阿里云镜像
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    google()
+    mavenCentral()
+}
+
+android {
+    namespace 'com.example.couplegps'
+    compileSdk 34
+    
+    defaultConfig {
+        applicationId "com.example.couplegps"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // Android 核心库
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    // 高德地图 (替代Google Maps)
+    implementation 'com.amap.api:3dmap:latest.integration'  // 3D地图
+    implementation 'com.amap.api:location:latest.integration'  // 定位功能
+    
+    // 网络请求库
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    
+    // Room 数据库 (本地存储)
+    implementation 'androidx.room:room-runtime:2.6.0'
+    kapt 'androidx.room:room-compiler:2.6.0'
+    implementation 'androidx.room:room-ktx:2.6.0'
+    
+    // Kotlin 协程
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    
+    // 生命周期组件
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    
+    // Socket.IO 客户端 (用于点对点连接)
+    implementation 'io.socket:socket.io-client:2.1.0'
+    
+    // GSON (JSON解析)
+    implementation 'com.google.code.gson:gson:2.10.1'
+    
+    // 测试库
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+} 
