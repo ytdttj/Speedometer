@@ -1,95 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ui.settings.SettingsActivity">
-
-        <TextView        android:id="@+id/tvUserInfoTitle"        android:layout_width="wrap_content"        android:layout_height="wrap_content"        android:text="配对信息"        android:textSize="18sp"        android:textStyle="bold"        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toTopOf="parent" />    <TextView        android:id="@+id/tvPairStatus"        android:layout_width="wrap_content"        android:layout_height="wrap_content"        android:layout_marginTop="8dp"        android:text="配对状态: 未配对"        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toBottomOf="@+id/tvUserInfoTitle" />    <TextView        android:id="@+id/tvPairId"        android:layout_width="wrap_content"        android:layout_height="wrap_content"        android:layout_marginTop="4dp"        android:text="配对ID: xxxx-xxxx-xxxx"        android:visibility="gone"        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toBottomOf="@+id/tvPairStatus"        tools:visibility="visible" />    <View        android:id="@+id/divider1"        android:layout_width="0dp"        android:layout_height="1dp"        android:layout_marginTop="16dp"        android:background="@android:color/darker_gray"        app:layout_constraintEnd_toEndOf="parent"        app:layout_constraintStart_toStartOf="parent"        app:layout_constraintTop_toBottomOf="@+id/tvPairId" />
+    android:background="#212121"
+    tools:context="cc.ytdttj.speed.SettingsActivity">
 
     <TextView
-        android:id="@+id/tvLocationTitle"
+        android:id="@+id/settings_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="位置设置"
-        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:text="设置"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvUpdateInterval"
+    <RadioGroup
+        android:id="@+id/location_mode_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="位置更新间隔: 10秒"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLocationTitle" />
-
-    <SeekBar
-        android:id="@+id/sliderUpdateInterval"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:max="100"
-        android:progress="50"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUpdateInterval" />
+        app:layout_constraintTop_toBottomOf="@+id/location_settings_label">
+
+        <RadioButton
+            android:id="@+id/high_accuracy_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="高精度模式"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:checked="true"
+            android:padding="8dp" />
+
+        <RadioButton
+            android:id="@+id/balanced_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="平衡模式"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:padding="8dp" />
+    </RadioGroup>
 
     <TextView
-        android:id="@+id/tvUpdateIntervalHint"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="调整位置更新频率。更快的更新提供更准确的位置，但会消耗更多电量。"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sliderUpdateInterval" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUpdateIntervalHint" />
-
-    <TextView
-        android:id="@+id/tvPairTitle"
+        android:id="@+id/location_settings_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="配对设置"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        android:text="定位模式"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+
+    <TextView
+        android:id="@+id/high_accuracy_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="同时使用GPS/北斗和网络定位（WiFi、基站定位）"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location_mode_group" />
+
+    <TextView
+        android:id="@+id/balanced_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="根据信号质量动态切换，平衡精度和电量消耗"
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/high_accuracy_description" />
+
+    <TextView
+        android:id="@+id/battery_save_note"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="注意：当电量低于20%时，将自动切换到平衡模式以节省电量"
+        android:textColor="#FFEB3B"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balanced_description" />
 
     <Button
-        android:id="@+id/btnUnpair"
+        android:id="@+id/save_settings_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#F44336"
-        android:text="解除配对"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPairTitle" />
-
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:text="保存设置"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

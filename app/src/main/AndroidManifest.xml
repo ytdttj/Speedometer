@@ -1,58 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.couplegps">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 权限声明 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="情侣定位"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CoupleGPS">
-
-        <!-- Google Maps API密钥 -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
-        <!-- 主Activity -->
+        android:theme="@style/Theme.车速表"
+        tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- 登录Activity -->
+        
         <activity
-            android:name=".ui.auth.LoginActivity"
-            android:exported="false" />
-
-        <!-- 配对Activity -->
-        <activity
-            android:name=".ui.pairing.PairingActivity"
-            android:exported="false" />
-
-        <!-- 地图Activity -->
-        <activity
-            android:name=".ui.map.MapActivity"
-            android:exported="false" />
-
-        <!-- 设置Activity -->
-        <activity
-            android:name=".ui.settings.SettingsActivity"
+            android:name=".SettingsActivity"
             android:exported="false"
-            android:parentActivityName=".ui.map.MapActivity" />
-
+            android:label="设置"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
-
